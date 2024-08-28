@@ -1,9 +1,3 @@
-## Description
-
-To get started with Gin, you'll typically create a new Go project, import the Gin package, define your routes, middleware, and handlers, and then run the application.
-
-I develope the user registration for api for login and update the user details with using database Postgres.
-
 ## GO Installation
 
 [GO Install] -- Follow this link to install golang in machine.
