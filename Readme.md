@@ -47,3 +47,17 @@ Please run go server as code
 And open "ZZZ" folder and double click "html.html"
 Please follow your requirement step by step.
 Thank you.
+
+This backend project needs that you have set up Postgres on your machine.
+Postgres has to contain the "testdb" database including "tb_test" table.
+You may create database and table manually.
+
+    host			= "localhost"
+    port			= 5432
+    user			= "postgres"
+    password	=	"1234"
+    dbname		= "testdb"
+
+My skill is not good so that it couldn't give you a pleasure, I'm afraid.
+
+Give an advicement, thank you.
