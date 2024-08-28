@@ -1,0 +1,74 @@
+Create Golang API
+
+Library - your choice
+
+Database - PostgreSQL
+
+Table: users
+Columns: uuid(VARCHAR),username(VARCHAR),password(VARCHAR),email(VARCHAR),api_user_id(VARCHAR),is_admin(bool),
+
+
+User Endpoints:
+
+
+POST
+/api/v1/register
+{"username": $username, "email": $email, "password": $password}
+
+On register:
+  • Fetch Access Token from
+
+    curl --request POST \
+      --url https://api.proxybatch.com/api/v1/login \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "username": "interview",
+        "password": "Testpass123@"
+    }'
+    curl --request POST \
+      --url http://localhost:8080/api/v1/login \
+      --header 'Content-Type: application/json' \
+      --data '{ 
+        "username": "interview", 
+        "password": "Testpass123@"
+    }'
+
+  • Create Sub User
+
+    curl --request POST \
+      --url https://api.proxybatch.com/api/v1/users \
+      --header 'Authorization: Bearer $access_token' \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "email": $email,
+        "username": $username,
+        "password": $password
+    }'
+
+  • Save Generated User ID and all of the user info to Postgres Database
+
+POST
+/api/v1/login
+{"username": $username, "password": $password}
+
+On login:
+
+  • Generate JWT Token that will contain fields such as: is_admin,uuid,api_user_id
+  • Set JWT Expiration to 15 minutes
+
+
+Admin Endpoints:
+
+GET
+/api/v1/users -> Fetch all users
+/api/v1/users?user_id=$uuid -> Fetch specified user
+
+DELETE
+/api/v1/users?user_id=$uuid -> Delete specified user
+
+POST
+/api/v1/users?user_id=$uuid -> Update specified user
+{"username": $username, "email": $email, "api_user_id": $api_user_id} 
+
+
+Make sure the Database calls are thread safe
