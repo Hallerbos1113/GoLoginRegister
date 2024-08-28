@@ -32,6 +32,8 @@ Run the build file:
 
 ## APIs
 
-| Usage | API                          |
-| ----- | ---------------------------- |
-| Login | https://localhost:8080/login |
+| Usage    | API                                    | Type              |
+| -------- | -------------------------------------- | ----------------- |
+| register | https://localhost:8080/api/v1/register | post              |
+| Login    | https://localhost:8080/api/v1/login    | post              |
+| users    | https://localhost:8080/api/v1/users    | GET, DELETE, POST |
