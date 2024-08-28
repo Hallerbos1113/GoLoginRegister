@@ -37,3 +37,13 @@ Run the build file:
 | register | https://localhost:8080/api/v1/register | post              |
 | Login    | https://localhost:8080/api/v1/login    | post              |
 | users    | https://localhost:8080/api/v1/users    | GET, DELETE, POST |
+
+HOW TO PLAY THIS TEST?
+
+Please run go server as code
+
+> go run .
+
+And open "ZZZ" folder and double click "html.html"
+Please follow your requirement step by step.
+Thank you.
