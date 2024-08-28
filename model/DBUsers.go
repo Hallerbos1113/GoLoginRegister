@@ -3,11 +3,18 @@ package model
 import(
 	"fmt"
 	"example/utils"
+	"errors"
 )
 
 func RegUser(user *User) (*User, error) {
-	user.Password = utils.HashPassword(user.Password)
 	user.Uuid =  utils.GenerateUserID(user.UserName)
+	user.ApiUserID = utils.GetApiID(user.UserName, user.Password, user.Email)
+	user.Password = utils.HashPassword(user.Password)
+
+	if user.ApiUserID == "" {
+		return nil, errors.New("Third party Api is failed.")
+	}
+
 	query := `INSERT INTO tb_test ("Uuid", "Username", "Password", "Api_user_id", "Is_admin", "Email") VALUES ($1,$2,$3,$4,$5,$6)`
 	res, err := DB.Exec(query, user.Uuid, user.UserName, user.Password, user.ApiUserID, user.IsAdmin, user.Email)
 	if err != nil || res == nil {
